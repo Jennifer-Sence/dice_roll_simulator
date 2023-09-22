@@ -1,5 +1,6 @@
 const buttonEl = document.getElementById("roll-button");
 const diceEl = document.getElementById("dice");
+const rollhistoryEl = document.getElementById("roll-history")
 
 let historyList = [];
 
@@ -12,7 +13,12 @@ function rollDice(){
 }
 
 function updateRollHistory(){
-    
+    rollhistoryEl.innerHTML = "";
+    for (let i=0; i<historyList.length; i++){
+        const listItem = document.createElement("li")
+        listItem.innerHTML = `Roll ${i + 1}: <span>${getDiceFace(historyList[i])}</span>`;
+        rollhistoryEl.appendChild(listItem);
+    }
 }
 
 function getDiceFace(rollResult){
